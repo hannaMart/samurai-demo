@@ -14,6 +14,9 @@ app.get('/products', (req: Request, res: Response) => {
 app.get('/products/:productName', (req: Request, res: Response) => {
   let product = products.find(p => p.title === req.params.productName)
   res.send(product)
+
+  console.log('Requested product:', req.params.productName);
+  console.log('Found product:', product);
 })
 
 app.listen(port,  () => {
