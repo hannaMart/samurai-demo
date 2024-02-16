@@ -2,7 +2,7 @@ import express, {Request, Response} from 'express'
 const app = express()
 const port = process.env.PORT || 3000;
 
-let products = [{title: "Jelly"},{title: "Grind"},{title: "Nook"}]
+const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'nook'}]
 
 app.get('/', (req: Request, res: Response) => {
   let startMessage = 'Hello Hania- oopsy, Hania! you did IT ))!'
@@ -11,12 +11,9 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/products', (req: Request, res: Response) => {
   res.send(products)
 })
-app.get('/products/:productName', (req: Request, res: Response) => {
-  let product = products.find(p => p.title === req.params.productName)
+app.get('/products/nook', (req: Request, res: Response) => {
+  let product = products.find(p => p.title === "nook")
   res.send(product)
-
-  console.log('Requested product:', req.params.productName);
-  console.log('Found product:', product);
 })
 
 app.listen(port,  () => {
