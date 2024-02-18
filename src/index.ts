@@ -21,6 +21,14 @@ app.get('/addresses', (req, res) => {
 
   res.send(addresses);
 });
+app.post('/addresses', (req, res) => {
+const newAddress = {
+  id: +(new Date()),
+  status: req.body.status
+}
+addresses.push(newAddress)
+res.status(201).send(newAddress)
+});
 app.get('/products/:productTitle', (req: Request, res: Response) => {
   const productTitle = req.params.productTitle.toLowerCase()
   let product = products.find(p => p.title.toLowerCase() === productTitle)
