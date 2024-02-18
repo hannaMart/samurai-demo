@@ -6,8 +6,7 @@ const port = process.env.PORT || 3000;
 const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'Nook'}]
 const addresses = [{id: 1, status: 'real'}, {id: 2, status: 'real'}, {id: 3, status: 'real'}]
 //Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится
-const parsmiddleware = bodyParser({});
-app.use(parsmiddleware);
+app.use(bodyParser.json());
 
 app.get('/', (req: Request, res: Response) => {
   let startMessage = 'Hello, Hania- oopsy, Hania! you did IT ))!'
@@ -46,7 +45,7 @@ app.delete('/addresses/:id', (req: Request, res: Response) => {
       addresses.splice(i, 1);
       res.send(204);
     return;
-  } else res.send(404)
+  } 
   }
 })
 app.get('/addresses/:id', (req, res) => {
