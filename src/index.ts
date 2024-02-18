@@ -6,7 +6,7 @@ const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'Nook'}]
 const addresses = [{id: 1, status: 'real'}, {id: 2, status: 'real'}, {id: 3, status: 'real'}]
 
 app.get('/', (req: Request, res: Response) => {
-  let startMessage = 'Hello Hania- oopsy, Hania! you did IT ))!'
+  let startMessage = 'Hello, Hania- oopsy, Hania! you did IT ))!'
   res.send(startMessage)
 })
 app.get('/products', (req: Request, res: Response) => {
