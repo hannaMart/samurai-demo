@@ -42,7 +42,7 @@ app.delete('/addresses/:id', (req: Request, res: Response) => {
   res.send(address) 
 else res.send(404)
 })
-app.delete('/addresses/:id', (req, res) => {
+app.get('/addresses/:id', (req, res) => {
   let address = addresses.find(p => p.id === +req.params.id);
   if (address)
       res.send(address);
