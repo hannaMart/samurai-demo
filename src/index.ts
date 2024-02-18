@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'Nook'}]
 const addresses = [{id: 1, status: 'real'}, {id: 2, status: 'real'}, {id: 3, status: 'real'}]
-//Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится
+//Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится - a bit different from Dimych's
 app.use(bodyParser.json());
 
 app.get('/', (req: Request, res: Response) => {
@@ -54,6 +54,13 @@ app.get('/addresses/:id', (req, res) => {
       res.send(address);
   else
       res.send(404);
+});
+app.put('/addresses/:id', (req, res) => {
+  let address = addresses.find(p => p.id === +req.params.id);
+  if (address){
+    address.status = req.body.status
+    res.send(address);}
+  else res.send(404);
 });
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
