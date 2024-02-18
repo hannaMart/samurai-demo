@@ -17,6 +17,10 @@ app.get('/products', (req: Request, res: Response) => {
     res.send(products)
   }
 })
+app.get('/addresses', (req, res) => {
+
+  res.send(addresses);
+});
 app.get('/products/:productTitle', (req: Request, res: Response) => {
   const productTitle = req.params.productTitle.toLowerCase()
   let product = products.find(p => p.title.toLowerCase() === productTitle)
