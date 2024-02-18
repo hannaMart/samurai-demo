@@ -3,12 +3,11 @@ import bodyParser from 'body-parser';
 const app = express()
 const port = process.env.PORT || 3000;
 
-//Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится
-const middlewareParser = bodyParser;
-app.use(middlewareParser);
-
 const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'Nook'}]
 const addresses = [{id: 1, status: 'real'}, {id: 2, status: 'real'}, {id: 3, status: 'real'}]
+//Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится
+const parsmiddleware = bodyParser({});
+app.use(parsmiddleware);
 
 app.get('/', (req: Request, res: Response) => {
   let startMessage = 'Hello, Hania- oopsy, Hania! you did IT ))!'
@@ -31,7 +30,7 @@ const newAddress = {
   id: +(new Date()),
   status: req.body.status
 }
-addresses.push(newAddress)
+addresses.push(newAddress);
 res.status(201).send(newAddress)
 });
 app.get('/products/:productTitle', (req: Request, res: Response) => {
