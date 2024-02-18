@@ -29,7 +29,7 @@ app.get('/products/:productTitle', (req: Request, res: Response) => {
 else res.send(404)
 })
 
-app.get('/addresses/:id', (req: Request, res: Response) => { 
+app.delete('/addresses/:id', (req: Request, res: Response) => { 
   for (let i = 0; i<addresses.length; i++){
     if (addresses[i].id = +req.params.id) {
       addresses.splice(i, 1);
