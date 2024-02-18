@@ -1,6 +1,11 @@
-import express, {Request, Response} from 'express'
+import express, {Request, Response} from 'express';
+import bodyParser from 'body-parser';
 const app = express()
 const port = process.env.PORT || 3000;
+
+//Подключаем промежуточный обработчик, готовящий запрос для передачи в удобном виде. Нужно для ПОСТ запросов. Иначе не запостится
+const middlewareParser = bodyParser;
+app.use(middlewareParser);
 
 const products = [{title: 'jelly'}, {title: 'grind'}, {title: 'Nook'}]
 const addresses = [{id: 1, status: 'real'}, {id: 2, status: 'real'}, {id: 3, status: 'real'}]
@@ -36,7 +41,6 @@ app.get('/products/:productTitle', (req: Request, res: Response) => {
   res.send(product) 
 else res.send(404)
 })
-
 app.delete('/addresses/:id', (req: Request, res: Response) => { 
   for (let i = 0; i<addresses.length; i++){
     if (addresses[i].id === +req.params.id) {
@@ -53,7 +57,6 @@ app.get('/addresses/:id', (req, res) => {
   else
       res.send(404);
 });
-
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
 })
