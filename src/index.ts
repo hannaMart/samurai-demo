@@ -31,7 +31,7 @@ else res.send(404)
 
 app.delete('/addresses/:id', (req: Request, res: Response) => { 
   for (let i = 0; i<addresses.length; i++){
-    if (addresses[i].id = +req.params.id) {
+    if (addresses[i].id === +req.params.id) {
       addresses.splice(i, 1);
       res.send(204);
     return;
